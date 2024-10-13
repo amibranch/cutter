@@ -38,7 +38,7 @@ endif()
 
 ExternalProject_Add(Rizin-Bundled
         SOURCE_DIR "${RIZIN_SOURCE_DIR}"
-        CONFIGURE_COMMAND "${MESON}" "<SOURCE_DIR>" ${MESON_OPTIONS} && "${MESON}" configure ${MESON_OPTIONS} --buildtype "$<$<CONFIG:Debug>:debug>$<$<NOT:$<CONFIG:Debug>>:release>"
+        CONFIGURE_COMMAND "${MESON}" setup "<SOURCE_DIR>" ${MESON_OPTIONS} && "${MESON}" configure ${MESON_OPTIONS} --buildtype "$<$<CONFIG:Debug>:debug>$<$<NOT:$<CONFIG:Debug>>:release>"
         BUILD_COMMAND "${NINJA}"
         BUILD_ALWAYS TRUE
         INSTALL_COMMAND "${NINJA}" install)

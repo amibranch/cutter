@@ -1,0 +1,4 @@
+option('extra_plugin_dir', type: 'string', value: '', description: 'Extra load path for plugins')
+option('ghidra-plugin', type: 'boolean', value: true, description: 'Compile and install ghidra-plugin')
+
+

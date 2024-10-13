@@ -1,0 +1,13 @@
+[wrap-git]
+# NOTE: Exchange this after mergin the PR:
+url=https://github.com/amibranch/rz-ghidra.git
+revision = add_meson_build
+
+#url=https://github.com/rizinorg/rz-ghidra.git
+#revision=dev
+depth = 1
+
+[provide]
+rz_ghidra = rz_ghidra_dep
+
+

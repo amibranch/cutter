@@ -186,6 +186,12 @@ CutterCore *CutterCore::instance()
     return uniqueInstance;
 }
 
+#if defined(CUTTER_RZGHIDRA_STATIC)
+extern RzCorePlugin rz_core_plugin_ghidra;
+extern RzAnalysisPlugin rz_analysis_plugin_ghidra;
+extern RzAsmPlugin rz_asm_plugin_ghidra;
+#endif
+
 void CutterCore::initialize(bool loadPlugins)
 {
 #if defined(MACOS_RZ_BUNDLED)
@@ -199,6 +205,11 @@ void CutterCore::initialize(bool loadPlugins)
 
     rz_cons_new(); // initialize console
     core_ = rz_core_new();
+#if defined(CUTTER_RZGHIDRA_STATIC)
+    rz_core_plugin_add(core_, &rz_core_plugin_ghidra);
+    rz_analysis_plugin_add(core_->analysis, &rz_analysis_plugin_ghidra);
+    rz_asm_plugin_add(core_->rasm, &rz_asm_plugin_ghidra);
+#endif
     rz_core_task_sync_begin(&core_->tasks);
     coreBed = rz_cons_sleep_begin();
     CORE_LOCK();
